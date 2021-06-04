@@ -11,7 +11,7 @@ class Solution {
             chars[newlen++] = chars[i];
             if(j-i > 1){
                 String count = j-i + "";
-                for(char c : count.
+                for(char c : count.toCharArray()){
                     chars[newlen++] = c;
                 }
             }
