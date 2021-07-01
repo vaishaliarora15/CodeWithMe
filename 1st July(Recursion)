@@ -1,0 +1,147 @@
+1.  kth Grammar : https://leetcode.com/problems/k-th-symbol-in-grammar/
+
+class Solution {
+    public int kthGrammar(int n, int k) {
+        if(n==1 && k ==1){
+            return 0;
+        }
+        int mid = (int)(Math.pow(2,n-1))/2;
+        if(k <= mid){
+            return kthGrammar(n-1,k);
+        }
+        else{
+            int ans = kthGrammar(n,k-mid); 
+            if(ans == 1) return 0;
+            else return 1;
+        }
+    }
+}
+
+2. Tower Of Hanoi : https://practice.geeksforgeeks.org/problems/tower-of-hanoi-1587115621/1
+
+class Hanoi {
+
+    public long toh(int N, int from, int to, int aux) {
+        if(N == 1){
+            System.out.println("move disk "+N+" from rod "+from+" to rod "+to);
+            return 1;
+            
+        }
+        long a = toh(N-1,from,aux,to);
+        System.out.println("move disk "+N+" from rod "+from+" to rod "+to);
+        long b = toh(N-1,aux,to,from);
+        return 1+a+b;
+    }
+}
+
+3. Sort a Stack : https://practice.geeksforgeeks.org/problems/sort-a-stack/1
+
+class GfG{
+	public Stack<Integer> sort(Stack<Integer> s)
+	{
+		Stack<Integer> st = s;
+		if(st.size() == 0){
+		    return st;
+		}
+		int temp = st.pop();
+		sort(st);
+		insert(st,temp);
+		
+		return st;
+	}
+	public Stack<Integer> insert(Stack<Integer> st, int temp){
+	    Stack<Integer> s = st;
+	    if(s.size() == 0 || s.peek() <= temp){
+	        s.push(temp);
+	        return s;
+	    }
+	    int val = s.pop();
+	    insert(s,temp);
+	    s.push(val);
+	    
+	    return s;
+	}
+}
+
+4. Min Depth of Binary Tree : https://leetcode.com/problems/minimum-depth-of-binary-tree/
+
+class Solution {
+    public int minDepth(TreeNode root) {
+        if (root == null){
+            return 0;
+        }
+    
+        if (root.left != null && root.right != null){
+            return Math.min(minDepth(root.left), minDepth(root.right))+1;
+        }   
+        else{
+            return Math.max(minDepth(root.left), minDepth(root.right))+1;
+        }    
+    }
+}
+
+5. Max Depth of Binary Tree : https://leetcode.com/problems/maximum-depth-of-binary-tree/
+
+class Solution {
+    public int maxDepth(TreeNode root) {
+        if(root == null){
+            return 0;
+        }
+        int lchild = maxDepth(root.left);
+        int rchild = maxDepth(root.right);
+        return 1 + Math.max(lchild,rchild);
+    }
+}
+
+6. Delete Middle Element of Stack : https://practice.geeksforgeeks.org/problems/delete-middle-element-of-a-stack/1
+
+class Solution
+{
+    //Function to delete middle element of a stack.
+    public void deleteMid(Stack<Integer>s,int sizeOfStack){
+        if(sizeOfStack == 0){
+            return;
+        }
+        int k = 1 + sizeOfStack/2 ;
+        delete(s,k);
+        return;
+        
+    }
+    public void delete(Stack<Integer> st, int k){
+        if(k == 1){
+            st.pop();
+            return;
+        }
+        int temp = st.pop();
+        delete(st,k-1);
+        st.push(temp);
+    }
+    
+}
+
+7. Sort an Array : Same Approach as of sorting a stack
+
+8. Reverse a Stack : 
+
+Class Solution{
+    public void reverse(Stack<Integer> st){
+        if(st.size() == 0){
+            return;
+        }
+        int temp = st.pop();
+        reverse(st);
+        insert(st,temp);
+        return;
+    }
+    public Stack<Integer> insert(Stack<Integer> st, int temp){
+        if(st.size() == 0){
+            st.push(temp);
+            return;
+        }
+        int val = st.pop();
+        insert(st,temp);
+        st.push(val);
+        return;
+    }
+}
+
