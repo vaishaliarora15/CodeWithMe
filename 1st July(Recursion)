@@ -145,3 +145,33 @@ Class Solution{
     }
 }
 
+9. Fibonacci Number : https://leetcode.com/problems/fibonacci-number/
+
+class Solution {
+    public int fib(int n) {
+        if(n == 0){
+            return 0;
+        }
+        else if(n == 1){
+            return 1;
+        }
+        else{
+            return fib(n-1) + fib(n-2);
+        }
+    }
+}
+
+10. Remove element from linked list : https://leetcode.com/problems/remove-linked-list-elements/
+
+class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+        if (head == null) return null;
+        head.next = removeElements(head.next, val);
+        if(head.val == val){
+            return head.next;
+        }
+        else{
+            return head;
+        }
+    }
+}
